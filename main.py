@@ -12,7 +12,11 @@ reddit = praw.Reddit(
 
 
 def story_grabber(num_stories):
-    # grab that amount of stories off of reddit, have done this elsewhere
+    subreddit = reddit.subreddit('WritingPrompts')
+    hottest_stories = subreddit.hot(limit=50)
+    for story in hottest_stories:
+        print(story)
+
 
 
 def french_translation(input_text):
