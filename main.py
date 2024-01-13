@@ -1,5 +1,6 @@
 import praw
 import csv
+import openai
 
 reddit = praw.Reddit(
     client_id='',
@@ -9,6 +10,7 @@ reddit = praw.Reddit(
     password=''
 )
 
+api_key = "YOUR_API_KEY_HERE"
 
 
 def story_grabber(num_stories):
@@ -22,7 +24,18 @@ def story_grabber(num_stories):
                 stories_content.append(translated_comment)
     return stories_content
 
+def query_gpt(prompt, api_key):
+    openai.api_key = api_key
+
+    response = openai.Completion.create(
+        engine="text-davinci-003",
+        prompt=prompt,
+        max_tokens=150
+    )
+
+    return response.choices[0].text.strip()
 
 
-def french_translation(input_text):
+def french_translation(input_text, api_key):
     # train LLM or use pretrained-LLM or neural network to do the french translation
+    return query_gpt(input_text, api_key)
