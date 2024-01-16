@@ -399,16 +399,18 @@ def test_model():
     ["The clock has stopped.", "L'horloge s'est arrêtée."],
     ["Take any two cards you like.", "Prends deux cartes de ton choix."]
     ]
-    
+
     for sentence in infer_sentences:
         print(f"SRC: {sentence[0]}")
         print(f"GT: {sentence[1]}")
         print(f"PRED: {translate(model, sentence[0])}\n")
 
-create_translation_model()
+def main():
+    if os.path.exists('outputs/model.pth'):
+        test_model()
+    else:
+        create_translation_model()
 
-# print(torch.cuda.is_available())
-# print(torch.__version__)
 
 def story_grabber(num_stories):
     stories_content = []
