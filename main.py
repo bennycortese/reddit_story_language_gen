@@ -405,22 +405,27 @@ def test_model():
         print(f"GT: {sentence[1]}")
         print(f"PRED: {translate(model, sentence[0])}\n")
 
+
+
 def main():
     if os.path.exists('outputs/model.pth'):
         test_model()
     else:
         create_translation_model()
 
+main()
+
 
 def story_grabber(num_stories):
     stories_content = []
+    model = load_model()
     subreddit = reddit.subreddit('WritingPrompts')
     hottest_stories = subreddit.hot(limit=50)
     for story in hottest_stories:
         story.comments.replace_more(limit=None)
         for comment in story.comments.list():
             if comment.body and comment.score > 100 and len(comment.body) > 1000:
-                translated_comment = french_translation(comment.body)
+                translated_comment = translate(model, comment.body)
                 stories_content.append(translated_comment)
     return stories_content
 
