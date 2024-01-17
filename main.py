@@ -413,10 +413,15 @@ def main():
     else:
         create_translation_model()
 
+    story_grabbing = "OFF"
+    if story_grabbing == "ON":
+        story_grabber()
+
+
 main()
 
-
-def story_grabber(num_stories):
+# num_stories
+def story_grabber():
     stories_content = []
     model = load_model()
     subreddit = reddit.subreddit('WritingPrompts')
