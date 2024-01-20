@@ -420,6 +420,9 @@ def main():
 
 main()
 
+def generate_narrative(story_sequence)
+    pass # hit api endpoint with story_sequence
+
 def create_a_narrative(collection_of_stories):
     story_sequence = ""
     for story in collection_of_stories:
