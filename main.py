@@ -430,6 +430,9 @@ def create_a_narrative(collection_of_stories):
 
     # generate_narrative(story_sequence) # hit self hosted LLM or gpt for a narrative to be generated from a sequence of disjoint stories, in french
 
+
+def talk_to_me():
+    pass
 # num_stories
 def story_grabber():
     stories_content = []
